@@ -27,7 +27,7 @@ def chooser(max_value):
         option = input("Please choose an option: ")
         try:
             option = int(option)
-        except TypeError:
+        except ValueError:
             print("Invalid option. Please type a number!")
         else:
             if option >= 0 and option <= max_value:
@@ -38,7 +38,8 @@ def chooser(max_value):
 
 
 def print_table(table, title_list):
-    """print out the table"""
+    """Print out the table"""
+    os.system('clear')
     # set the max lenght from table or title
     max_lenght = []
     for i in range(len(title_list)):
@@ -73,19 +74,21 @@ def print_table(table, title_list):
 
 
 def main():
+    """Print main menu and start program"""
+    project_list = projects.project_read()
     main_menu_items = ("Start new project", "Current projects", "Tasks", "Archived projects", "Users")
     cont = True
     while cont:
         option = menu_drawer("Project manager", main_menu_items, "Exit")
         if option == 1:
-            continue
+            project_list = projects.start_projects(project_list)
         elif option == 2:
-            projects.active_projects()
+            projects.active_projects(project_list)
         elif option == 3:
             tasks.tasks()
             continue
         elif option == 4:
-            projects.archived_projects()
+            projects.archived_projects(project_list)
         elif option == 5:
             users.users()
         else:
