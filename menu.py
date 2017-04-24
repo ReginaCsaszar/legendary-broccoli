@@ -4,6 +4,9 @@ import os
 
 
 def menu_drawer(title, menu_items, exit_title):
+    """Print menu title, items and exit options, then call cooser function for ask an option\n
+    return option as integer
+    """
     os.system('clear')
     print(title, "\n")
     for index, item in enumerate(menu_items):
@@ -13,6 +16,9 @@ def menu_drawer(title, menu_items, exit_title):
 
 
 def chooser(max_value):
+    """Asks for a menu option.\n
+    return option as integer
+    """
     again = True
     while again:
         option = input("Please choose an option: ")
@@ -29,6 +35,7 @@ def chooser(max_value):
 
 
 def print_table(table, title_list):
+    """print out the table"""
     # set the max lenght from table or title
     max_lenght = []
     for i in range(len(title_list)):
