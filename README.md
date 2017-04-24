@@ -1,2 +1,4 @@
 # legendary-broccoli
-Task timer and management app base in python
+Task timer and management app 
+Planned by Jeannie
+(implementing in progress)
