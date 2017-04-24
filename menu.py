@@ -1,6 +1,7 @@
 """Main parts, menu items, menu chooser, table printing"""
 
 import os
+import projects
 
 
 def menu_drawer(title, menu_items, exit_title):
@@ -77,11 +78,11 @@ def main():
         if option == 1:
             continue
         elif option == 2:
-            continue
+            projects.active_projects()
         elif option == 3:
             continue
         elif option == 4:
-            continue
+            projects.archived_projects()
         elif option == 5:
             continue
         else:
