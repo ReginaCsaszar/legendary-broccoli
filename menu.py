@@ -2,6 +2,8 @@
 
 import os
 import projects
+import users
+import tasks
 
 
 def menu_drawer(title, menu_items, exit_title):
@@ -80,11 +82,12 @@ def main():
         elif option == 2:
             projects.active_projects()
         elif option == 3:
+            tasks.tasks()
             continue
         elif option == 4:
             projects.archived_projects()
         elif option == 5:
-            continue
+            users.users()
         else:
             cont = False
     return False
