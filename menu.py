@@ -6,6 +6,11 @@ import users
 import tasks
 
 
+def wait():
+    back = input("\nPress enter to continue ")
+    return None
+
+
 def menu_drawer(title, menu_items, exit_title):
     """Print menu title, items and exit options, then call cooser function for ask an option\n
     return option as integer
@@ -76,12 +81,14 @@ def print_table(table, title_list):
 def main():
     """Print main menu and start program"""
     project_list = projects.project_read()
+    task_list = tasks.task_read()
     main_menu_items = ("Start new project", "Current projects", "Tasks", "Archived projects", "Users")
     cont = True
     while cont:
         option = menu_drawer("Project manager", main_menu_items, "Exit")
         if option == 1:
             project_list = projects.start_projects(project_list)
+            wait()
         elif option == 2:
             projects.active_projects(project_list)
         elif option == 3:
@@ -90,7 +97,7 @@ def main():
         elif option == 4:
             projects.archived_projects(project_list)
         elif option == 5:
-            users.users()
+            users.users(task_list, project_list)
         else:
             cont = False
     return False
