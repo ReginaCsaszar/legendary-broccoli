@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+
+        {% block script %}
+        {% endblock %}
+
+    </head>
+    
+    <body>
+
+        <div class="container">
+	
+            <div class="row">
+                
+                    <div class="col col-sm-12 col-xs-12 col-md-12">
+                        <div class="panel panel-default"><div class="panel-body">
+                            <div class="col col-sm-6 col-xs-6 col-md-6">
+                                <a class="brand task-font" href="#" >Taskr</a>
+                            </div>
+                            <div class="col col-sm-6 col-xs-6 col-md-6">
+                                <div id="user">
+                                <a href="#">Hello Jeannie!</a>
+                            </div></div>
+                        </div></div>
+                    </div>
+            
+            </div>
+                   
+            <div class="row">
+
+                <div class="col col-sm-4 col-xs-4 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body card task-hover">
+                            <a href="#">TASKS<br><span class="count task-font" id="task-count">2</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col col-sm-4 col-xs-4 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body card project-hover">
+                            <a href="#">PROJECTS<br><span class="count project-font" id="project-count">3</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-sm-4 col-xs-4 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body card team-hover">
+                            <a href="#">TEAMS<br>
+                            <span class="count team-font" id="team-count">2</span></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        {% block content %}
+        {% endblock %}
+        
+        </div>
+    </body>
+</html>
