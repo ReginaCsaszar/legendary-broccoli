@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='index.css')}}">
+
+    </head>
+    
+    <body>
+
+        <div class="container">
+	
+            <div class="row">
+                
+                    <div class="col col-sm-12 col-xs-12 col-md-12">
+                        <div class="panel panel-default"><div class="panel-body">
+                            <div class="col col-sm-6 col-xs-6 col-md-6">
+                                <p class="brand task-font">Taskr</p>
+                            </div>
+                            <div class="col col-sm-6 col-xs-6 col-md-6">
+                                <div class="user">
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#login">Log in</button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signup">Sign up</button>
+                            </div></div>
+                        </div></div>
+                    </div>
+            
+            </div>
+                   
+            <div class="row">
+
+                <div class="col col-sm-12 col-xs-12 col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {% if content %}
+                                <h2 class="task-font">Welcome!</h2>
+                                <h3>This is a time and task management page to help keep track of time spent on your projects and tasks.</h3>
+                            {% else %}
+                                <h2 class="task-font">Goodbye and come back again!</h2>
+                                <h3>This time and task management page remain here to help keep track of time spent on your projects and tasks.</h3>
+                            {% endif %}
+                                <p>You can create projects with list of tasks, add time goals and keep track of the amount of time that you spend in each task. You can spedify due dates to never late with any important project again. You can create teams, edit or manage them, or join to one.</p>
+                                <p>Please share any suggestions you have, as I'm always looking to improve the site.</p>
+                                <p>Current Features:</p>
+                                <ul>
+                                <li>Teams, projects and tasks handling</li>
+                                <li>Projects and tasks with due date and time goals</li>
+                                <li>Spent time measurement, progress bar and percentage display</li>
+                                <li>Charts and statistic on projects</li>
+                                <li>Dark and light theme</li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-sm-12 col-xs-12 col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="foot">Made with love and lots of code by Jeannie in 2017</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="login" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="task-font foot">Log in</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-warning" id="wronguser" style="display: none;">
+                                <strong>User name not exists.</strong> Try again or register.
+                            </div>
+                            <div class="alert alert-danger" id="wrongpsw" style="display: none;">
+                                <strong>Invalid password.</strong> Try again.
+                            </div>
+                        <form>
+                            <div class="form-group">
+                                <label for="user">Name:</label>
+                                <input type="text" class="form-control" id="user">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Log in</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="signup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="task-font foot">Registration</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-warning" id="reserveduser" style="display: none;">
+                                <strong>User name already exists.</strong> Try another name.
+                        </div>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="user">Name:</label>
+                                <input type="text" class="form-control" id="user">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Sign up</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
