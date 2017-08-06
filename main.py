@@ -34,7 +34,7 @@ def bye():
     return render_template("index.html")
 
 
-@app.route("/login")
+@app.route("/tasks")
 def tasks():
     return render_template("tasks.html")
 
