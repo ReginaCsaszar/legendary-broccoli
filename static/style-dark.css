@@ -1,0 +1,171 @@
+
+a {
+    color: #808080;
+}
+
+a:hover, a:active, a:visited, a:focus {
+    text-decoration: none;
+    color: #808080;
+}
+
+a.brand {
+    font-weight: bold;
+    font-size: 38;
+}
+
+body {
+    background-color: black;
+    color: #808080;
+    font-size: 18;
+    user-select: none;
+    cursor: default;
+}
+
+.right {
+    text-align: right;
+}
+
+.panel-default {
+    border-color: black;
+}
+
+.panel-body {
+    background-color: #262626;
+    border-color: #262626;
+}
+
+.task-collapse:hover {
+    color: #999999;
+}
+
+.col {
+    padding: 0 5px 0 5px;
+}
+
+.full {
+    padding: 0;
+}
+
+.panel {
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 20;
+    font-weight: bold;
+}
+
+#user {
+    padding-top: 15px;
+    text-align: right;
+}
+
+.card {
+    text-align: right;
+    border: 3px solid #262626;
+    border-radius: 3px;
+    padding: 0;
+}
+
+.progress {
+    background-color: #404040;
+}
+
+.card-danger {
+    border-color: #330000;
+    background-color: #330000;
+    color: white;
+}
+
+.card-danger:hover {
+    border-color: #990000;
+}
+
+
+.card a {
+    display: block;
+    padding: 15px;
+}
+
+.count {
+     font-weight: bold;
+     font-size: 50px;
+}
+
+.team-font {
+    color: #b36b00;
+}
+
+.task-font, a.task-font {
+    color: #007a99;
+}
+
+.project-font {
+    color: #882b88;
+}
+
+.chart-font {
+    color: green;
+}
+
+.danger-font, a.danger-font {
+    color: #b30000;
+}
+
+.progress {
+    margin: 0 20px 0 0;
+}
+
+.body-card {
+    border: 3px solid #262626;
+    border-radius: 4px;
+}
+
+#task-panel {
+    padding: 15px 20px 0 20px;
+}
+
+.stick-up {
+    padding-top: 0;
+    margin-top :0;
+}
+#piechart {
+    margin-bottom: 20px;
+}
+
+.team-hover:hover, .team-border {
+    border-color: #b36b00;
+}
+
+.task-hover:hover, .task-border {
+    border-color: #007a99;
+}
+
+.chart-hover:hover, .chart-border {
+    border-color: green;
+}
+
+.project-hover:hover, .project-border {
+    border-color: #882b88;
+}
+
+.btn, .btn:hover, .btn:active, .btn:visited, .btn:focus, .btn:target, .btn:active:focus {
+    color: black;
+    outline: none;
+}
+
+tr {
+    padding: 10px;
+    
+}
+
+.table>tbody>tr>td {
+    border-color: black;
+}
