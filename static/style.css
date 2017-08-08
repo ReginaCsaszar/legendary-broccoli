@@ -1,11 +1,11 @@
 
 a {
-    color: #808080;
+    color: #595959;
 }
 
 a:hover, a:active, a:visited, a:focus {
     text-decoration: none;
-    color: #808080;
+    color: black;
 }
 
 a.brand {
@@ -14,8 +14,8 @@ a.brand {
 }
 
 body {
-    background-color: black;
-    color: #808080;
+    background-color: #bfe6f2;
+    color: #595959;
     font-size: 18;
     user-select: none;
     cursor: default;
@@ -23,15 +23,6 @@ body {
 
 .right {
     text-align: right;
-}
-
-.panel-default {
-    border-color: black;
-}
-
-.panel-body {
-    background-color: #262626;
-    border-color: #262626;
 }
 
 .task-collapse:hover {
@@ -48,7 +39,6 @@ body {
 
 .panel {
     margin-bottom: 10px;
-    background-color: black;
 }
 
 h2 {
@@ -62,21 +52,18 @@ h3 {
     font-weight: bold;
 }
 
-#user {
+.user {
     padding-top: 15px;
     text-align: right;
 }
 
 .card {
     text-align: right;
-    border: 3px solid #262626;
+    border: 3px solid white;
     border-radius: 3px;
     padding: 0;
 }
 
-.progress {
-    background-color: #404040;
-}
 
 .card-danger {
     border-color: #330000;
@@ -100,11 +87,11 @@ h3 {
 }
 
 .team-font {
-    color: #b36b00;
+    color: #f0ad4e;
 }
 
 .task-font, a.task-font {
-    color: #007a99;
+    color: #5bc0de;
 }
 
 .project-font {
@@ -124,7 +111,7 @@ h3 {
 }
 
 .body-card {
-    border: 3px solid #262626;
+    border: 3px solid white;
     border-radius: 4px;
 }
 
@@ -141,11 +128,11 @@ h3 {
 }
 
 .team-hover:hover, .team-border {
-    border-color: #b36b00;
+    border-color: #f0ad4e;
 }
 
 .task-hover:hover, .task-border {
-    border-color: #007a99;
+    border-color: #5bc0de;
 }
 
 .chart-hover:hover, .chart-border {
@@ -157,15 +144,9 @@ h3 {
 }
 
 .btn, .btn:hover, .btn:active, .btn:visited, .btn:focus, .btn:target, .btn:active:focus {
-    color: black;
     outline: none;
 }
 
 tr {
     padding: 10px;
-    
-}
-
-.table>tbody>tr>td {
-    border-color: black;
-}
+    }
