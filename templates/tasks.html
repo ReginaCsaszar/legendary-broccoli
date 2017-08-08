@@ -2,44 +2,89 @@
 
 {% block script %}
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js" defer></script>
-    <script src="{{url_for('static', filename='timer.js')}}" defer></script>
+    <script src="{{url_for('static', filename='tasks.js')}}" defer></script>
 {% endblock %}
 
 {% block content %}
     
 <div class="row">
-
-    <div class="col col-sm-4" id="left-panel">
-        
+{% for last_tasks in tasks["last_three_task"] %}
+    <div class="col col-sm-4">
         <div class="panel panel-default">
-            <div class="panel-body body-card project-hover" id="project-panel">
-                <h2 class="project-font">The first project</h2>
-                <p>Due date: 2017.08.03 17:00</p>
-                <p>Owner: Jeannie</p>
-                <p>Team: Bits Please!</p>
-                <p id="description">Here is a small description about this project, wich is important to understanding why this is necessary and why are there those task </p>
-                <p id="goal">Time goal: 8:00</p>
-                <p id="spent">Total time spent: 5:22</p>
-                <p class="count project-font right" id="project-percentage">57%</p>
+            <div class="panel-body body-card task-hover">
+                <h2 class="task-font">{{ last_tasks[1] }}</h2>
+                <p>Due date: {{ last_tasks[8] }}</p>
+                <p>Team id: {{ last_tasks[3] }}</p>
+                <p>Status: {{ last_tasks[5] }}</p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped" 
+                        data-id="{{ last_tasks[0] }}" 
+                        data-goal="{{ last_tasks[9] }}"
+                        data-spent="{{ last_tasks[10] }}"
+                        style="width:0%">
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="panel panel-default">
-            <div class="panel-body body-card chart-hover" id="stat-panel">
-                <h2 class="chart-font">Statistic</h2>
-                <p>Time spent on tasks</p>
-                <div id="piechart"></div>
-            </div>
-        </div>
-    
     </div>
+{% endfor %}
+</div>
 
-    <div class="col col-sm-8" id="right-panel">
+<div class="row">
+    <div class="col col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-body body-card" id="task-panel">
-                <h2 class="task-font">Tasks</h2>
+            <div class="panel-body body-card">
+                <div class="full col-sm-6 col-xs-6">
+                    <h2 class="task-font">Personal tasks</h2>
+                </div>
+                <div class="right user col-sm-6 col-xs-6">
+                    <button type="button" class="btn btn-info">New</button>
+                </div>
+                {% if tasks["personal_tasks"] %}
+                <table class="table table-hover">
+                    {% for user_tasks in tasks["personal_tasks"] %}
+                    <tr><td><h3>{{ user_tasks[1] }}</h3></td>
+                        <td>{{ user_tasks[5] }}</td>
+                        <td>{{ user_tasks[7] }}</td>
+                        <td class="task-font right"><h3>52%</h3></tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <div class="col col-sm-12"><p>You don't have any task.</p></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 
-                <div class="panel-group">
+{% if tasks["team_tasks"] %}
+<div class="row">
+    <div class="col col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-body body-card">
+                <div class="full col-sm-6 col-xs-6">
+                    <h2 class="task-font">Team tasks</h2>
+                </div>
+                <div class="right user col-sm-6 col-xs-6">
+                    <button type="button" class="btn btn-info">New</button>
+                </div>
+                <table class="table table-hover">
+                    
+                        {% for own_tasks in tasks["team_tasks"] %}
+                        <tr><td><h3>{{ own_tasks[1] }}</h3></td>
+                            <td>{{ own_tasks[5] }}</td>
+                            <td>{{ own_tasks[7] }}</td>
+                            <td class="task-font right"><h3>52%</h3></tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<!--
+
+    <div class="panel-group">
                     <div class="panel panel-default task-collapse">
                         <div class="panel-body" data-toggle="collapse" href="#collapse0">
                             <div class="full col-sm-12">
@@ -182,20 +227,11 @@
                 <p><button type="button" class="btn btn-success">Add task</button></p>
             </div>
 
-            <div class="panel-body body-card task-hover" id="task-panel-mini">
-                <h2 class="task-font">Tasks</h2>
-                <table class="table">
-                    <tr><td><h3>Done</h3></td><td class="task-font right"><h3>100%</h3></tr>
-                    <tr><td><h3>My task</h3></td><td class="task-font right"><h3>30%</h3ta></tr>
-                    <tr><td><h3>Other task i see</h3></td><td class="task-font right"><h3>50%</h3></tr>
-                    <tr><td><h3>Other done task i see</h3></td><td class="task-font right"><h3>100%</h3></tr>
-                    <tr><td><h3>Another unassigned task</h3></td><td><h3 class="task-font right">0%</h3></tr>
-                </table>
-            </div>
+            
 
         </div>
-    </div>
+    </div> -->
     
-</div>
+
 
 {% endblock %}

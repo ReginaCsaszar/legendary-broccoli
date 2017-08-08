@@ -29,8 +29,9 @@
                                 <a class="brand task-font" href="#" >Taskr</a>
                             </div>
                             <div class="col col-sm-6 col-xs-6 col-md-6">
-                                <div id="user">
-                                <a href="#">Hello Jeannie!</a>
+                                <div class="user">
+                                <a href="#">Hello {{ session['username'] }}!</a>
+                                <a type="button" class="btn btn-info" href="/bye">Log out</a>
                             </div></div>
                         </div></div>
                     </div>
@@ -42,7 +43,7 @@
                 <div class="col col-sm-4 col-xs-4 col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body card task-hover">
-                            <a href="#">TASKS<br><span class="count task-font" id="task-count">2</span></a>
+                            <a href="#">TASKS<br><span class="count task-font" id="task-count">{{ session['task_counter'] }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +51,7 @@
                 <div class="col col-sm-4 col-xs-4 col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body card project-hover">
-                            <a href="#">PROJECTS<br><span class="count project-font" id="project-count">3</span></a>
+                            <a href="#">PROJECTS<br><span class="count project-font" id="project-count">{{ session['project_counter'] }}</span></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +60,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body card team-hover">
                             <a href="#">TEAMS<br>
-                            <span class="count team-font" id="team-count">2</span></a>
+                            <span class="count team-font" id="team-count">{{ session['team_counter'] }}</span></a>
                         </div>
                     </div>
                 </div>
