@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block content %}
-    
+
+
+<!-- this part displays the last 3 task, with empty space if don't have 3 -->
 <div class="row">
 {% for last_tasks in tasks["last_three_task"] %}
     <div class="col col-sm-4">
@@ -30,6 +32,7 @@
 {% endfor %}
 </div>
 
+<!-- there are the personal tasks, if no, message -->
 <div class="row">
     <div class="col col-sm-12">
         <div class="panel panel-default">
@@ -40,198 +43,120 @@
                 <div class="right user col-sm-6 col-xs-6">
                     <button type="button" class="btn btn-info">New</button>
                 </div>
+                <div class="col col-sm-12">
                 {% if tasks["personal_tasks"] %}
-                <table class="table table-hover">
                     {% for user_tasks in tasks["personal_tasks"] %}
-                    <tr><td><h3>{{ user_tasks[1] }}</h3></td>
-                        <td>{{ user_tasks[5] }}</td>
-                        <td>{{ user_tasks[7] }}</td>
-                        <td class="task-font right"><h3>52%</h3></tr>
+                    <div class="panel-group">
+                        <div class="panel panel-default task-collapse">
+                            <div class="panel-body" data-toggle="collapse" href="#collapse{{ user_tasks[0] }}">
+                                <div class="full col-sm-12">
+                                    <div class="full col-sm-6">
+                                        <h3>{{ user_tasks[1] }}</h3>
+                                    </div>
+                                    <div class="full col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info progress-bar-striped"
+                                            data-id="{{ user_tasks[0] }}" 
+                                            data-goal="{{ user_tasks[9] }}"
+                                            data-spent="{{ user_tasks[10] }}" 
+                                            style="width:0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse{{ user_tasks[0] }}" class="panel-collapse collapse">
+                                <div class="panel-body stick-up">
+                                    <p><button type="button" class="btn btn-success" id="collapse1-control">Start</button>
+                                    <button type="button" class="btn btn-info">Done</button></p>
+                                    <p>Status: {{ user_tasks[5] }}</p>
+                                    <p>Due date: {{ user_tasks[8] }}</p>
+                                    <p>Details: {{ user_tasks[2] }}</p>
+                                    <p>Created: {{ user_tasks[6] }}</p>
+                                    <p>Modified: {{ user_tasks[7] }}</p>
+                                    <p>Time goalt: {{ user_tasks[9] }}</p>
+                                    <p>Time spent: {{ user_tasks[10] }}</p>
+                                    <p><button type="button" class="btn btn-warning">Edit</button>
+                                    <button type="button" class="btn btn-danger">Delete</button></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% endfor %}
-                </table>
                 {% else %}
-                <div class="col col-sm-12"><p>You don't have any task.</p></div>
+                <p>You don't have any task.</p>
                 {% endif %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- this shows only when the user has team tasks, there's no possibly to add new -->
 {% if tasks["team_tasks"] %}
 <div class="row">
     <div class="col col-sm-12">
         <div class="panel panel-default">
             <div class="panel-body body-card">
-                <div class="full col-sm-6 col-xs-6">
-                    <h2 class="task-font">Team tasks</h2>
-                </div>
-                <div class="right user col-sm-6 col-xs-6">
-                    <button type="button" class="btn btn-info">New</button>
-                </div>
-                <table class="table table-hover">
+                <h2 class="task-font">Team tasks</h2>
+                
+                {% for own_tasks in tasks["team_tasks"] %}
                     
-                        {% for own_tasks in tasks["team_tasks"] %}
-                        <tr><td><h3>{{ own_tasks[1] }}</h3></td>
-                            <td>{{ own_tasks[5] }}</td>
-                            <td>{{ own_tasks[7] }}</td>
-                            <td class="task-font right"><h3>52%</h3></tr>
-                        {% endfor %}
-                </table>
+                    <div class="panel-group">
+                        <div class="panel panel-default task-collapse">
+                            <div class="panel-body" data-toggle="collapse" href="#collapse{{ own_tasks[0] }}">
+                                <div class="full col-sm-12">
+                                    <div class="full col-sm-6">
+                                        <h3>{{ own_tasks[1] }}</h3>
+                                    </div>
+                                    <div class="full col-sm-6">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info progress-bar-striped"
+                                            data-id="{{ own_tasks[0] }}" 
+                                            data-goal="{{ own_tasks[9] }}"
+                                            data-spent="{{ own_tasks[10] }}" 
+                                            style="width:0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse{{ own_tasks[0] }}" class="panel-collapse collapse">
+                                <div class="panel-body stick-up">
+                                    <p><button type="button" class="btn btn-success" id="collapse1-control">Start</button>
+                                    <button type="button" class="btn btn-info">Done</button></p>
+                                    <p>Status: {{ own_tasks[5] }}</p>
+                                    <p>Team id: {{ own_tasks[4] }}</p>
+                                    <p>Due date: {{ own_tasks[8] }}</p>
+                                    <p>Details: {{ own_tasks[2] }}</p>
+                                    <p>Created: {{ own_tasks[6] }}</p>
+                                    <p>Modified: {{ own_tasks[7] }}</p>
+                                    <p>Time goalt: {{ own_tasks[9] }}</p>
+                                    <p>Time spent: {{ own_tasks[10] }}</p>
+                                    <p><button type="button" class="btn btn-warning">Edit</button>
+                                    <button type="button" class="btn btn-warning">Reassign</button>
+                                    <button type="button" class="btn btn-danger">Delete</button></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    {% endfor %}
+
             </div>
         </div>
     </div>
 </div>
 {% endif %}
-<!--
 
-    <div class="panel-group">
-                    <div class="panel panel-default task-collapse">
-                        <div class="panel-body" data-toggle="collapse" href="#collapse0">
-                            <div class="full col-sm-12">
-                                <div class="full col-sm-6">
-                                    <h3>A successfull task</h3>
-                                </div>
-                                <div class="full col-sm-6">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:100%">Done</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse0" class="panel-collapse collapse">
-                            <div class="panel-body stick-up">
-                                <p>Owner: Jeannie</p>
-                                <p>Due date: 2017.08.03 8:00</p>
-                                <p>This task is very useful to show how collapsible task details work when it is my task wich is done. I can edit or delete this task.</p>
-                                <p>Time spent: 2:52</p>
-                                <p>Time goal: 3:00</p>
-                                <p><button type="button" class="btn btn-warning">Edit</button>
-                                <button type="button" class="btn btn-danger">Delete</button></p>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel-group">
-                    <div class="panel panel-default task-collapse">
-                        <div class="panel-body" data-toggle="collapse" href="#collapse1">
-                            <div class="full col-sm-12">
-                                <div class="full col-sm-6">
-                                    <h3>My task</h3>
-                                </div>
-                                <div class="full col-sm-6">
-                                    <div class="progress">
-                                        <div id="collapse1-progress" class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" style="width:50%">50%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <div class="panel-body stick-up">
-                                <p><button type="button" class="btn btn-success" id="collapse1-control">Start</button>
-                                <button type="button" class="btn btn-info">Done</button></p>
-                                <p>Owner: Jeannie</p>
-                                <p>Due date: 2017.08.03 8:00</p>
-                                <p>This task is very useful to show how collapsible task details work when it is my task. I can reassign, edit, delete, start and pause timer, and set to done when ewerything is ready.</p>
-                                <p>Time spent: <span id="collapse1-spent">1:49:22</span></p>
-                                <p>Time goal: 3:00</p>
-                                <p><button type="button" class="btn btn-warning">Reassign</button>
-                                <button type="button" class="btn btn-warning">Edit</button>
-                                <button type="button" class="btn btn-danger">Delete</button></p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel-group">
-                    <div class="panel panel-default task-collapse">
-                        <div class="panel-body" data-toggle="collapse" href="#collapse2">
-                            <div class="full col-sm-12">
-                                <div class="full col-sm-6">
-                                    <h3>Other task i see</h3>
-                                </div>
-                                <div class="full col-sm-6">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-team progress-bar-striped" id="progress-collapse2" style="width:30%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse">
-                            <div class="panel-body stick-up">
-                                <p>Owner: Other team member</p>
-                                <p>Due date: 2017.08.03 8:00</p>
-                                <p>This task is very useful to show how collapsible task details work when it is not my task. I can't do nothing.</p>
-                                <p>Time spent: 1:22</p>
-                                <p>Time goal: 3:00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel-group">
-                    <div class="panel panel-default task-collapse">
-                        <div class="panel-body" data-toggle="collapse" href="#collapse5">
-                            <div class="full col-sm-12">
-                                <div class="full col-sm-6">
-                                    <h3>Other done task i see</h3>
-                                </div>
-                                <div class="full col-sm-6">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width:100%">Done</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse5" class="panel-collapse collapse">
-                            <div class="panel-body stick-up">
-                                <p>Owner: Other team member</p>
-                                <p>Due date: 2017.08.03 8:00</p>
-                                <p>This task is very useful to show how collapsible task details work when it is not my task. I can't do nothing.</p>
-                                <p>Time spent: 2:22</p>
-                                <p>Time goal: 3:00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel-group">
-                    <div class="panel panel-default task-collapse">
-                        <div class="panel-body" data-toggle="collapse" href="#collapse3">
-                            <div class="full col-sm-12">
-                                <div class="full col-sm-6">
-                                    <h3>Another unassigned task</h3>
-                                </div>
-                                <div class="full col-sm-6">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" style="width:0%">0%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse3" class="panel-collapse collapse">
-                            <div class="panel-body stick-up">
-                                <p>Owner:</p>
-                                <p>Due date: 2017.08.03 8:00</p>
-                                <p>This task is very useful to show how collapsible task details work when it is not my task, but unassigned yet. I can assign myself to this task and become the owner.</p>
-                                <p>Time spent: 0:0</p>
-                                <p>Time goal: 2:00</p>
-                                <p><button type="button" class="btn btn-success">Pick</button></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <p><button type="button" class="btn btn-success">Add task</button></p>
+<!-- this shows only when the user has done tasks, js will fill it with ajax data when needed -->
+<div class="row">
+    <div class="col col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-body body-card task-hover">
+                <h2 class="task-font">5 completed task</h2>
             </div>
-
-            
-
         </div>
-    </div> -->
-    
-
+    </div>
+</div>
 
 {% endblock %}
