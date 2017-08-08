@@ -22,24 +22,24 @@
         <div class="container">
 	
             <div class="row">
-                
-                    <div class="col col-sm-12 col-xs-12 col-md-12">
-                        <div class="panel panel-default"><div class="panel-body">
-                            <div class="col col-sm-6 col-xs-6 col-md-6">
-                                <a class="brand task-font" href="#" >Taskr</a>
-                            </div>
-                            <div class="col col-sm-6 col-xs-6 col-md-6">
-                                <div class="user">
-                                <a href="#">Hello {{ session['username'] }}!</a>
-                                <a type="button" class="btn btn-info" href="/bye">Log out</a>
-                            </div></div>
+                <!-- header with brand name and user name + logout -->
+                <div class="col col-sm-12 col-xs-12 col-md-12">
+                    <div class="panel panel-default"><div class="panel-body">
+                        <div class="col col-sm-6 col-xs-6 col-md-6">
+                            <a class="brand task-font" href="#" >Taskr</a>
+                        </div>
+                        <div class="col col-sm-6 col-xs-6 col-md-6">
+                            <div class="user">
+                            <a href="#">Hello {{ session['username'] }}!</a>
+                            <a type="button" class="btn btn-info" href="/bye">Log out</a>
                         </div></div>
-                    </div>
+                    </div></div>
+                </div>
             
             </div>
                    
             <div class="row">
-
+                <!-- tasks card -->
                 <div class="col col-sm-4 col-xs-4 col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body card task-hover">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <!-- projects card -->
                 <div class="col col-sm-4 col-xs-4 col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body card project-hover">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- teams card -->
                 <div class="col col-sm-4 col-xs-4 col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body card team-hover">
@@ -70,6 +70,17 @@
         {% block content %}
         {% endblock %}
         
+            <!-- footer -->
+            <div class="row">
+                <div class="col col-sm-12 col-xs-12 col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="foot">Made with love and lots of code by Jeannie in 2017</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>
